@@ -22,6 +22,9 @@
         <th>Title</th>
         <th>Publisher</th>
         <th>Year Published</th>
+        <th>Price</th>
+        <th>Authors</th>
+        <th>Categories</th>
         <th></th>
     </tr>
     </thead>
@@ -32,11 +35,15 @@
             <td>${book.title}</td>
             <td>${book.publisher}</td>
             <td>${book.yearPublished}</td>
-            <td></td>
-                    <%--<td>${books.authors.get(0)}</td>--%>
-                    <%--<td>${books.publisher}</td>--%>
-                    <%--<td>${books.yearPublished}</td>--%>
+            <td>${book.price}</td>
+            <td><c:forEach var="author" items="${book.authors}">
+                <table>
+                    <tr>${author.firstName}<%=" "%></tr>
+                    <tr>${author.lastName}</tr>
+                </table>
+                </c:forEach></td>
 
+            <td></td>
         </tr>
     </c:forEach>
     </tbody>

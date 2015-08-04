@@ -81,16 +81,9 @@ public class Book {
 
     @Override
     public String toString() {
-        /* private Integer id;
-    private String title;
-    private double price;
-    private String description;
-    private String publisher;
-    private String yearPublished;
-    private ArrayList<Author> authors= new ArrayList<Author>();
-    private ArrayList<Category> categories = new ArrayList<Category>();*/
+
     StringBuilder bookString = new StringBuilder();
-        bookString.append("ID: "+this.id+ " -");
+        bookString.append("ID: "+this.title+ " -");
         bookString.append("Title: "+this.title+ " -");
         bookString.append("Price: "+currencyFormat.format(this.price)+ " -");
         bookString.append("Description: "+this.title+ " -");

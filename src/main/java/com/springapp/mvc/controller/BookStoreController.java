@@ -20,7 +20,7 @@ public class BookStoreController {
     }
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public String printWelcome2(ModelMap model, String id) {
+    public String printWelcome2(ModelMap model) {
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://localhost:8443/bookstore/books/";
         ArrayList<Book> books = restTemplate.getForObject(url, ArrayList.class);
