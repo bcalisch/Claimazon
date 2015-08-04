@@ -1,9 +1,11 @@
 package com.springapp.mvc.model;
 
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Book {
+    private static final NumberFormat currencyFormat = NumberFormat.getInstance();
     private Integer id;
     private String title;
     private double price;
@@ -76,4 +78,25 @@ public class Book {
     public void setCategories(ArrayList<Category> categories) {
         this.categories = categories;
     }
+
+    @Override
+    public String toString() {
+        /* private Integer id;
+    private String title;
+    private double price;
+    private String description;
+    private String publisher;
+    private String yearPublished;
+    private ArrayList<Author> authors= new ArrayList<Author>();
+    private ArrayList<Category> categories = new ArrayList<Category>();*/
+    StringBuilder bookString = new StringBuilder();
+        bookString.append("ID: "+this.id+ " -");
+        bookString.append("Title: "+this.title+ " -");
+        bookString.append("Price: "+currencyFormat.format(this.price)+ " -");
+        bookString.append("Description: "+this.title+ " -");
+        bookString.append("Publisher: "+this.publisher+ " -");
+        bookString.append("Year Published: "+this.yearPublished.substring(0,4)+ " -");
+        return bookString.toString();
+    }
+
 }

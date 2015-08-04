@@ -13,7 +13,7 @@ public class BookResponse {
             return books;
         }
 
-        public void setDocs( ArrayList<Book> books) {
+        public void setBooks( ArrayList<Book> books) {
             this.books = books;
         }
 
