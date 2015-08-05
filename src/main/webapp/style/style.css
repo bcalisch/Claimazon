@@ -5,3 +5,26 @@ img{
     align-content:center;
     text-align:center;
 }
+#leftNav {
+    display:inline-table;
+    border-left:0.5px solid #a9a9a9;
+}
+#leftNav li{
+    list-style-type: none;
+}
+a{
+    text-decoration:none;
+    color: #0066c0
+}
+a:hover{
+    text-decoration:none;
+    color: #e47911
+}
+#leftNav a{
+    color:#333;
+}
+#leftNav a:hover{
+    color:#e47911;
+}
+
+/*color: #0066c0;  this the amazon blue link*/

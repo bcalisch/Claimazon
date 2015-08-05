@@ -12,25 +12,21 @@
 
 <h2><a href="/">Back</a></h2>
 
-<aside style="display:inline-table">
-    <table>
-        <thead>
-        <tr>
-            <th>Categories</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><a href="/books?category=Default&order=Default&ascending=true">All </a> </td>
-        </tr>
+<div id = "leftNav">
+    <div id="headerNav">
+        <p id="navTitle">Categories</p>
+    </div>
+    <div id="leftNavBody">
+    <ul class="leftNavBody">
+        <li>
+            <a href="/books?category=Default&order=Default&ascending=true">All </a>
+        </li>
         <c:forEach var="category" items="${categoryCount}">
-            <tr>
-                <td><a href="/books?category=${category.name}&order=Default&ascending=true">${category.name}<%="("%>${category.count}<%=")"%></a></td>
-            </tr>
+            <li><a href="/books?category=${category.name}&order=Default&ascending=true">${category.name}<%=" ("%>${category.count}<%=")"%></a></li>
         </c:forEach>
-        </tbody>
-    </table>
-</aside>
+    </ul>
+    </div>
+</div>
 
 <table border="1" align="center" style="width:50%;margin-left:4em; display:inline-block;clear-side: right">
     <thead>
