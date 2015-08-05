@@ -68,6 +68,15 @@ public class BookStoreController {
         model.addAttribute("category", category);
         return "books";
     }
+    @RequestMapping(value = "/book", method = RequestMethod.GET)
+    public String printSingleBook(@RequestParam("id") String id, ModelMap model) {
+        RestTemplate restTemplate = new RestTemplate();
+        String urlBook = "http://localhost:8443/bookstore/books/id/"+id;;
+        ArrayList<LinkedHashMap> books = restTemplate.getForObject(urlBook, ArrayList.class);
+        model.addAttribute("bookList", books);
+
+        return "books";
+    }
 
     private ArrayList<Book> makeBooks(ArrayList<LinkedHashMap> booksJSON) {
         ArrayList<Book> books = new ArrayList<Book>();

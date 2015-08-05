@@ -1,15 +1,16 @@
 img{
-    margin:auto;
-    width:6em;
-    height:6em;
-    align-content:center;
-    text-align:center;
+    margin-right: 1em;
+    width: 6em;
+    height: 6em;
+    align-content: center;
+    text-align: center;
 }
 #leftNav {
-    display:inline-table;
-    border-left:0.5px solid #a9a9a9;
+    padding-right: 1.8em;
+    display: inline-table;
+    border-right :1px solid #e2e2e2;
 }
-#leftNav li{
+li{
     list-style-type: none;
 }
 a{
@@ -27,4 +28,54 @@ a:hover{
     color:#e47911;
 }
 
+.itemsContainer{
+    display: inline-flex;
+    max-width: 60%;
+    margin-left: 7em;
+    padding-top: 1em;
+    border-top: 1px solid #e2e2e2;
+}
+#itemContainer{
+    /*display: inline-flex;*/
+    /*max-width: 60%;*/
+    /*margin-left: 7em;*/
+    /*padding-top: 1em;*/
+    /*border-top: 1px solid #e2e2e2;*/
+}
+.row{
+    display: inline-table;
+}
+
+.items{
+    clear: left;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #e2e2e2;
+
+}
+#price{
+    color: #b12704;
+    position: relative;
+    clear: both;
+    display: inherit;
+}
+#topDescriptionItem{
+    position: relative;
+    top: -5em;
+}
+#description{
+    display: inline-flex;
+    padding-bottom: 1em;
+}
+#descriptionItem{
+    display:inline-flex;
+}
+div{
+    display:inline;
+}
+.row:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
 /*color: #0066c0;  this the amazon blue link*/
