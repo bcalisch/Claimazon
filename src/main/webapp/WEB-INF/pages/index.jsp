@@ -1,6 +1,6 @@
 <html>
 <body>
-	<h1><a href="/books">${message}</a></h1>
+	<h1><a href="/books?category=Default&order=Default&ascending=false">${message}</a></h1>
 
 </body>
 </html>

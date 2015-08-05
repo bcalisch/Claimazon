@@ -14,12 +14,35 @@
 <body>
 <h1>${message}</h1>
 
+
+
 <h2><a href="/">Back</a></h2>
-<table border="1" align="center" style="width:50%">
+
+<aside style="display:inline-table">
+    <table>
+        <thead>
+        <tr>
+            <th>Categories</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="/books?category=Default&order=Default&ascending=true">All </a> </td>
+        </tr>
+        <c:forEach var="category" items="${categoryCount}">
+            <tr>
+                <td><a href="/books?category=${category.name}&order=Default&ascending=true">${category.name}<%="("%>${category.count}<%=")"%></a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</aside>
+
+<table border="1" align="center" style="width:50%;margin-left:4em; display:inline-block;clear-side: right">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Title</th>
+        <th><a href="/books?category=${category}&order=Default&ascending=${ascending}">ID</a></th>
+        <th><a href="/books?category=${category}&order=Title&ascending=${ascending}">Title</a></th>
         <th>Publisher</th>
         <th>Year Published</th>
         <th>Price</th>
@@ -41,7 +64,12 @@
                     <tr>${author.firstName}<%=" "%></tr>
                     <tr>${author.lastName}</tr>
                 </table>
-                </c:forEach></td>
+            </c:forEach></td>
+            <td><c:forEach var="category" items="${book.categories}">
+                <table>
+                    <tr>${category.name}<%=" "%></tr>
+                </table>
+            </c:forEach></td>
 
             <td></td>
         </tr>
