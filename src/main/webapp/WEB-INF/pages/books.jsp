@@ -1,14 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: benjamin
-  Date: 8/3/15
-  Time: 12:37 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
     <title></title>
 </head>
 <body>
@@ -55,7 +49,7 @@
     <tbody>
     <c:forEach var="book" items="${bookList}">
         <tr>
-            <td><img src="/images/A9781430231684-small_8.png"/></td>
+            <td><img src="/images/${book.imageName}"/></td>
             <td>${book.id}</td>
             <td>${book.title}</td>
             <td>${book.publisher}</td>

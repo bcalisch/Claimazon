@@ -12,8 +12,17 @@ public class Book {
     private String description;
     private String publisher;
     private String yearPublished;
+    private String imageName;
     private ArrayList<Author> authors= new ArrayList<Author>();
     private ArrayList<Category> categories = new ArrayList<Category>();
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
     public Integer getId() {
         return id;

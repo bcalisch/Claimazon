@@ -44,7 +44,7 @@ public class BookStoreController {
                                        @RequestParam("ascending") Boolean ascending,
                                        ModelMap model) {
         RestTemplate restTemplate = new RestTemplate();
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<Book> books;
         String urlBook;
         if (category.equals("Default")) {
             urlBook = "http://localhost:8443/bookstore/books";
@@ -80,6 +80,10 @@ public class BookStoreController {
             book.setCategories((ArrayList<Category>) (map.get("categories")));
             book.setPublisher(map.get("publisher").toString());
             book.setYearPublished((map.get("yearPublished").toString().substring(0, 4)));
+            if(map.get("imageName") != null){
+                book.setImageName(map.get("imageName").toString());
+            }
+
 
             books.add(book);
         }
@@ -90,9 +94,9 @@ public class BookStoreController {
     private ArrayList<Book> sortBooks(String order, ArrayList<Book> books, boolean ascending) {
         if (order.equals("Title")) {
             if(ascending == true){
-                Collections.sort(books, new BookComparator.BookComparatorAscending());
-            }else{
                 Collections.sort(books, new BookComparator.BookComparatorDescending());
+            }else{
+                Collections.sort(books, new BookComparator.BookComparatorAscending());
             }
 
         }
