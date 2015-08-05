@@ -41,6 +41,7 @@
 <table border="1" align="center" style="width:50%;margin-left:4em; display:inline-block;clear-side: right">
     <thead>
     <tr>
+        <th>Image</th>
         <th><a href="/books?category=${category}&order=Default&ascending=${ascending}">ID</a></th>
         <th><a href="/books?category=${category}&order=Title&ascending=${ascending}">Title</a></th>
         <th>Publisher</th>
@@ -54,6 +55,7 @@
     <tbody>
     <c:forEach var="book" items="${bookList}">
         <tr>
+            <td><img src="/images/A9781430231684-small_8.png"/></td>
             <td>${book.id}</td>
             <td>${book.title}</td>
             <td>${book.publisher}</td>

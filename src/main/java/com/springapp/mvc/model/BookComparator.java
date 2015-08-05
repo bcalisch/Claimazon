@@ -6,11 +6,19 @@ import java.util.Comparator;
  * Created by benjamin on 8/5/15.
  */
 
-    public class BookComparator implements Comparator<Book> {
+    public class BookComparator {
+       public static class BookComparatorDescending implements Comparator<Book> {
+           @Override
+           public int compare(Book book1, Book book2) {
+               return (book1.getTitle().compareToIgnoreCase(book2.getTitle()));
+           }
+       }
+    public static class BookComparatorAscending implements Comparator<Book> {
         @Override
         public int compare(Book book1, Book book2) {
-            return(book1.getTitle().compareToIgnoreCase(book2.getTitle()));
+            return(book2.getTitle().compareToIgnoreCase(book1.getTitle()));
         }
+    }
 
     }
 

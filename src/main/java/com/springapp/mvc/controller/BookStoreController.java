@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 
 
@@ -91,21 +90,16 @@ public class BookStoreController {
     private ArrayList<Book> sortBooks(String order, ArrayList<Book> books, boolean ascending) {
         if (order.equals("Title")) {
             if(ascending == true){
-                Collections.sort(books, new BookComparator());
+                Collections.sort(books, new BookComparator.BookComparatorAscending());
             }else{
-                Collections.sort(books, new BookComparatorAscending());
+                Collections.sort(books, new BookComparator.BookComparatorDescending());
             }
 
         }
         return books;
     }
 
-    public class BookComparatorAscending implements Comparator<Book> {
-        @Override
-        public int compare(Book book1, Book book2) {
-            return(book2.getTitle().compareToIgnoreCase(book1.getTitle()));
-        }
-    }
+
 
 
 }
