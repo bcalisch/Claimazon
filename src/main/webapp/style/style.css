@@ -5,6 +5,11 @@ img{
     align-content: center;
     text-align: center;
 }
+#formDiv{
+    /*display:inline-flex;*/
+    clear:both;
+    width:50%;
+}
 #leftNav {
     padding-right: 1.8em;
     display: inline-table;

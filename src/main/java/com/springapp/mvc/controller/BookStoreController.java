@@ -41,7 +41,6 @@ public class BookStoreController {
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String printBooksByCategory(@RequestParam("category") String category,
                                        @RequestParam("order") String order,
-                                       @RequestParam("ascending") Boolean ascending,
                                        ModelMap model) {
         RestTemplate restTemplate = new RestTemplate();
         ArrayList<Book> books;
@@ -56,13 +55,7 @@ public class BookStoreController {
         ArrayList<LinkedHashMap> booksJSON = restTemplate.getForObject(urlBook, ArrayList.class);
         ArrayList<Category> categories = restTemplate.getForObject(urlCategory, ArrayList.class);
         books = makeBooks(booksJSON);
-        books = sortBooks(order, books, ascending);
-        if(ascending){
-            model.addAttribute("ascending", false);
-        }
-        else{
-            model.addAttribute("ascending", true);
-        }
+        books = sortBooks(order, books);
         model.addAttribute("bookList", books);
         model.addAttribute("categoryCount", categories);
         model.addAttribute("category", category);
@@ -75,7 +68,7 @@ public class BookStoreController {
         ArrayList<LinkedHashMap> books = restTemplate.getForObject(urlBook, ArrayList.class);
         model.addAttribute("bookList", books);
 
-        return "books";
+        return "book";
     }
 
     private ArrayList<Book> makeBooks(ArrayList<LinkedHashMap> booksJSON) {
@@ -100,15 +93,24 @@ public class BookStoreController {
     }
 
 
-    private ArrayList<Book> sortBooks(String order, ArrayList<Book> books, boolean ascending) {
-        if (order.equals("Title")) {
-            if(ascending == true){
+    private ArrayList<Book> sortBooks(String order, ArrayList<Book> books) {
+        /*title-asc">Title: A-Z</option>
+            <option value="title-desc">Title: Z-A</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc*/
+
+        if (order.equals("title-asc")) {
                 Collections.sort(books, new BookComparator.BookComparatorDescending());
-            }else{
+            }else if (order.equals("title-desc")){
                 Collections.sort(books, new BookComparator.BookComparatorAscending());
             }
-
+        else if (order.equals("price-desc")){
+            Collections.sort(books, new BookComparator.BookPriceComparatorDescending());
         }
+        else if (order.equals("price-asc")){
+            Collections.sort(books, new BookComparator.BookPriceComparatorAscending());
+        }
+
         return books;
     }
 

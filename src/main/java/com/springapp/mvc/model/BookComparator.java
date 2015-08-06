@@ -19,8 +19,28 @@ import java.util.Comparator;
             return(book2.getTitle().compareToIgnoreCase(book1.getTitle()));
         }
     }
+    public static class BookPriceComparatorAscending implements Comparator<Book> {
+        @Override
+        public int compare(Book book1, Book book2) {
+            if(book1.getPrice()>book2.getPrice()) {
+                return 1;
+            }else return -1;
 
+        }
     }
+    public static class BookPriceComparatorDescending implements Comparator<Book> {
+        @Override
+        public int compare(Book book1, Book book2) {
+            if(book1.getPrice()<book2.getPrice()) {
+                return 1;
+            }else return -1;
+
+        }
+    }
+
+}
+
+
 
 //    public class bookPriceComparatorAscending implements Comparator<Book> {
 //        @Override

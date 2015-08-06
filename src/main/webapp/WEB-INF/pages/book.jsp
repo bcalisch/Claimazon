@@ -1,16 +1,48 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: benjamin
-  Date: 8/5/15
-  Time: 5:27 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src = "js/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
     <title></title>
 </head>
 <body>
+<h1>${message}</h1>
+
+
+    <h2><a id="myLink" href="javascript:goBack();" >Back</a></h2>
+
+
+<div class="itemsContainer">
+    <div id="containerHeader">Show Books</div>
+    <div id="results" class="row">
+        <ul id="resultsList">
+
+            <c:forEach var="book" items="${bookList}">
+                <li class="items">
+                    <div id="itemContainer">
+                        <div id="image"><img src="/images/${book.imageName}"/></div>
+                        <div id="description">
+                            <div id="topDescriptionItem">
+                                ${book.title}<%=" "%>
+                                    ${book.publisher}<%=": "%>
+                                    ${book.yearPublished}<%=" "%>
+                                <div id="price">
+                                    <%=" $"%>${book.price}
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
+
 
 </body>
 </html>
