@@ -60,7 +60,7 @@
             <c:forEach var="book" items="${bookList}">
                 <li class="items">
                     <div id="itemContainer">
-                        <div id="image"><img src="/images/${book.imageName}"/></div>
+                        <div ><img id="image" src="/images/${book.imageName}"/></div>
                         <div id="description">
                             <div id="topDescriptionItem">${book.id}<%=" "%>
                                 <a href="/book?id=${book.id}">${book.title}</a>
@@ -70,46 +70,11 @@
                                     <%=" $"%>${book.price}
                                 </div>
                             </div>
-
-
                         </div>
-
                     </div>
                 </li>
-                <%--<td><c:forEach var="author" items="${book.authors}">--%>
-                <%--<table>--%>
-                <%--<tr>${author.firstName}<%=" "%></tr>--%>
-                <%--<tr>${author.lastName}</tr>--%>
-                <%--</table>--%>
-                <%--</c:forEach></td>--%>
-                <%--<td><c:forEach var="category" items="${book.categories}">--%>
-                <%--<table>--%>
-                <%--<tr>${category.name}<%=" "%></tr>--%>
-                <%--</table>--%>
-                <%--</c:forEach></td>--%>
             </c:forEach>
-
-
         </ul>
-
-        <%--<table border="1" align="center" style="width:50%;margin-left:4em; display:inline-block;clear-side: right">--%>
-        <%--<thead>--%>
-        <%--<tr>--%>
-        <%--<th>Image</th>--%>
-        <%--<th><a href="/books?category=${category}&order=Default&ascending=${ascending}">ID</a></th>--%>
-        <%--<th><a href="/books?category=${category}&order=Title&ascending=${ascending}">Title</a></th>--%>
-        <%--<th>Publisher</th>--%>
-        <%--<th>Year Published</th>--%>
-        <%--<th>Price</th>--%>
-        <%--<th>Authors</th>--%>
-        <%--<th>Categories</th>--%>
-        <%--<th></th>--%>
-        <%--</tr>--%>
-        <%--</thead>--%>
-        <%--<tbody>--%>
-
-        <%--</tbody>--%>
-        <%--</table>--%>
     </div>
 
 </div>

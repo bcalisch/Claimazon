@@ -24,20 +24,6 @@ public class BookStoreController {
         model.addAttribute("message", "Click here to see all books");
         return "index";
     }
-//
-//    @RequestMapping(value = "/books", method = RequestMethod.GET)
-//    public String printWelcome2(ModelMap model) {
-//        RestTemplate restTemplate = new RestTemplate();
-//        String urlBook = "http://localhost:8443/bookstore/books/";
-//        String urlCategory = "http://localhost:8443/bookstore/categories/";
-//
-//        ArrayList<Book> books = restTemplate.getForObject(urlBook, ArrayList.class);
-//        ArrayList<Category> categories = restTemplate.getForObject(urlCategory, ArrayList.class);
-//        model.addAttribute("bookList", books);
-//        model.addAttribute("categoryCount", categories);
-//        return "books";
-//    }
-
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String printBooksByCategory(@RequestParam("category") String category,
                                        @RequestParam("order") String order,
@@ -52,9 +38,9 @@ public class BookStoreController {
         }
         String urlCategory = "http://localhost:8443/bookstore/categories/";
 
-        ArrayList<LinkedHashMap> booksJSON = restTemplate.getForObject(urlBook, ArrayList.class);
+        ArrayList<LinkedHashMap> booksHashmap = restTemplate.getForObject(urlBook, ArrayList.class);
         ArrayList<Category> categories = restTemplate.getForObject(urlCategory, ArrayList.class);
-        books = makeBooks(booksJSON);
+        books = makeBooks(booksHashmap);
         books = sortBooks(order, books);
         model.addAttribute("bookList", books);
         model.addAttribute("categoryCount", categories);
