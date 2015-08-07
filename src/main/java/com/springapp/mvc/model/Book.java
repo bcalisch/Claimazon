@@ -16,6 +16,15 @@ public class Book {
     private ArrayList<Author> authors= new ArrayList<Author>();
     private ArrayList<Category> categories = new ArrayList<Category>();
 
+    public Book(){
+        if(authors.size()==0) {
+            authors.add(new Author());
+        }
+        if(categories.size()==0){
+            categories.add(new Category());
+
+        }
+    }
     public String getImageName() {
         return imageName;
     }
@@ -92,12 +101,20 @@ public class Book {
     public String toString() {
 
     StringBuilder bookString = new StringBuilder();
-        bookString.append("ID: "+this.title+ " -");
+        bookString.append("ID: "+this.id+ " -");
         bookString.append("Title: "+this.title+ " -");
         bookString.append("Price: "+currencyFormat.format(this.price)+ " -");
-        bookString.append("Description: "+this.title+ " -");
+        bookString.append("Description: "+this.description+ " -");
         bookString.append("Publisher: "+this.publisher+ " -");
         bookString.append("Year Published: "+this.yearPublished.substring(0,4)+ " -");
+        bookString.append("Authors: ");
+        for(Author author: this.authors){
+            bookString.append(author.getFirstName()+ " " + author.getLastName()+", ");
+        }
+        bookString.append("Categories: ");
+        for(Category category: this.categories){
+            bookString.append(category.getName()+ ", ");
+        }
         return bookString.toString();
     }
 

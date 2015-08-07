@@ -5,6 +5,10 @@ public class Author {
     private String lastName;
 
 
+    public Author(){
+        firstName = "";
+        lastName= "";
+    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

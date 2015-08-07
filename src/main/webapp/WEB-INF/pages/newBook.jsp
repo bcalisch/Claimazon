@@ -46,10 +46,7 @@
             </tr>
 
             <tr>
-                <td>
-                    Author</td>
-
-
+                <td>Author</td>
                     <c:forEach items="${bookForm.authors}" var="author">
                 <td>First Name</td>
                 <td>
@@ -60,8 +57,6 @@
                 <form:input path="${author.lastName}" type="text"/>
                 </td>
                 </c:forEach>
-
-
             </tr>
 
             <tr>
@@ -94,7 +89,7 @@
 
 
                 <c:forEach items="${bookForm.categories}" var="category">
-                    
+
                     <td>
                         <form:input path="${category.name}" type="text"/>
                     </td>
