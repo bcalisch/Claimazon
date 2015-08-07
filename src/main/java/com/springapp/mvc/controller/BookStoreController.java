@@ -6,6 +6,7 @@ import com.springapp.mvc.model.BookComparator;
 import com.springapp.mvc.model.Category;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 @Controller
@@ -55,6 +57,31 @@ public class BookStoreController {
         model.addAttribute("bookList", books);
 
         return "book";
+    }
+    @RequestMapping(value = "/book/add", method = RequestMethod.GET)
+    public String addBookForm( ModelMap model) {
+        Book bookForm = new Book();
+        Author author = new Author();
+        Category category = new Category();
+        bookForm.getCategories().add(category);
+        bookForm.getAuthors().add(author);
+        model.put("bookForm", bookForm);
+        model.addAttribute("bookList", "Test");
+        model.addAttribute("author", author);
+        model.addAttribute("category", category);
+
+        return "newBook";
+    }
+    @RequestMapping(value = "/book/add", method = RequestMethod.POST)
+    public String processAddForm( @ModelAttribute("bookForm") Book book,
+                                  Map<String, Object> model) {
+
+        String urlBook = "http://localhost:8443/bookstore/book";
+        System.out.println("Title: " + book.getTitle());
+        RestTemplate restTemplate = new RestTemplate();
+        Book result = restTemplate.postForObject( urlBook, book, Book.class);
+        System.out.println("result = " + result);
+        return "newBookSuccess";
     }
 
     private ArrayList<Book> makeBooks(ArrayList<LinkedHashMap> booksJSON) {

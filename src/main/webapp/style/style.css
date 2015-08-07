@@ -111,4 +111,15 @@ div{
     line-height: 0;
     font-size: 0;
 }
+#formContainer form{
+    max-width:75%;
+    text-align:left;
+    margin-left:25%;
+    height:100%;
+    width:75%
+}
+#selected{
+    font-weight:bold;
+}
+
 /*color: #0066c0;  this the amazon blue link*/

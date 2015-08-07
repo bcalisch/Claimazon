@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: benjamin
@@ -8,9 +10,104 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
 </head>
 <body>
+<h1> Add New Book</h1>
 
+<div id="formContainer">
+
+
+    <form:form action="add" method="post" commandName="bookForm">
+        <table>
+            <tr>
+                <td>
+                    ID
+                </td>
+                <td>
+                    <form:input type="number" path="id"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Title
+                </td>
+                <td>
+                    <form:input type="text" path="title"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Price
+                </td>
+                <td>
+                    <form:input type="number" path="price"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Author</td>
+
+
+                    <c:forEach items="${bookForm.authors}" var="author">
+                <td>First Name</td>
+                <td>
+                <form:input path="${author.firstName}" type="text"/>
+                </td>
+                <td>Last Name</td>
+                <td>
+                <form:input path="${author.lastName}" type="text"/>
+                </td>
+                </c:forEach>
+
+
+            </tr>
+
+            <tr>
+                <td>
+                    Publisher
+                </td>
+                <td>
+                    <form:input type="text" path="publisher"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Publication Year
+                </td>
+                <td>
+                    <form:input type="date" path="yearPublished"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description
+                </td>
+                <td>
+                    <form:input type="text" path="description"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Category</td>
+
+
+                <c:forEach items="${bookForm.categories}" var="category">
+                    
+                    <td>
+                        <form:input path="${category.name}" type="text"/>
+                    </td>
+                </c:forEach>
+
+
+            </tr>
+
+        </table>
+        <input type="submit" value="Register"/>
+        <input type="reset" name="clear">
+    </form:form>
+
+</div>
 </body>
 </html>

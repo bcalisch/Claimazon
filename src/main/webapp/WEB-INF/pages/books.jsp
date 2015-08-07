@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -24,10 +25,10 @@
         <select class="a-spacing-top-mini"
                 style="vertical-align: baseline;" name="sort" id="sort"
                 onchange="javascript:goToNewPage();">
-            <option value="title-asc"selected="selected">Title: A-Z</option>
+            <option value="title-asc" selected="selected">Title: A-Z</option>
             <option value="title-desc">Title: Z-A</option>
             <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc" >Price: High to Low</option>
+            <option value="price-desc">Price: High to Low</option>
         </select>
         <noscript>&lt;input type="image"
             src="http://g-ecx.images-amazon.com/images/G/01/buttons/go-orange-trans._CB192189913_.gif" width="21"
@@ -43,9 +44,17 @@
             <li>
                 <a href="/books?category=Default&order=Default">All </a>
             </li>
-            <c:forEach var="category" items="${categoryCount}">
-                <li><a href="/books?category=${category.name}&order=Default">${category.name}<%=" ("%>
-                        ${category.count}<%=")"%></a></li>
+            <c:forEach var="categoryName" items="${categoryCount}">
+                <li><a id=
+                       <c:choose>
+                               <c:when test="${categoryName.name.equals(category)}">"selected"
+
+                    </c:when>
+                    <c:otherwise>""
+
+                    </c:otherwise>
+                    </c:choose> href="/books?category=${categoryName.name}&order=Default">${categoryName.name}<%=" ("%>
+                        ${categoryName.count}<%=")"%></a></li>
             </c:forEach>
         </ul>
     </div>
@@ -60,7 +69,7 @@
             <c:forEach var="book" items="${bookList}">
                 <li class="items">
                     <div id="itemContainer">
-                        <div ><img id="image" src="/images/${book.imageName}"/></div>
+                        <div><img id="image" src="/images/${book.imageName}"/></div>
                         <div id="description">
                             <div id="topDescriptionItem">${book.id}<%=" "%>
                                 <a href="/book?id=${book.id}">${book.title}</a>

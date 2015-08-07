@@ -26,8 +26,8 @@
                         <div id="description">
                             <div id="topDescriptionItem">
                                     ${book.title}<%=" "%>
-                                    ${book.publisher}<%=": "%>
-                                    ${book.yearPublished}<%=" "%>
+                                        Publisher: ${book.publisher}<%=": "%>
+                                    Year Published: ${book.yearPublished}<%=" "%>
                                 <div id="price">
                                     <%=" $"%>${book.price}
                                 </div>
