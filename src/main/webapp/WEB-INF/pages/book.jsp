@@ -10,8 +10,9 @@
 <body>
 <h1>${message}</h1>
 
-
-<h2><a id="myLink" href="javascript:goBack();">Back</a></h2>
+<c:forEach var="book" items="${bookList}">
+<h2><a id="myLink" href="javascript:goBack();">Back</a>
+    <a id="deleteLink" href="/book/delete?id=${book.id}">Delete</a></h2>
 
 
 <div class="itemsContainer">
@@ -19,7 +20,7 @@
     <div id="results" class="row">
         <ul id="resultsList">
 
-            <c:forEach var="book" items="${bookList}">
+
                 <li class="items">
                     <div id="itemContainer">
                         <div><img id="singleBookImage" src="/images/${book.imageName}"/></div>

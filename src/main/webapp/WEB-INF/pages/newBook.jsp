@@ -18,7 +18,7 @@
 <div id="formContainer">
 
 
-    <form:form action="add" method="post" commandName="bookForm">
+    <form:form action="add" method="post"  modelAttribute="bookForm"><%--commandName="bookForm"--%>
         <table>
             <tr>
                 <td>
@@ -47,14 +47,14 @@
 
             <tr>
                 <td>Author</td>
-                    <c:forEach items="${bookForm.authors}" var="author">
+                    <c:forEach items="${bookForm.authors}" var="author" varStatus="i">
                 <td>First Name</td>
                 <td>
-                <form:input path="${author.firstName}" type="text"/>
+                <form:input path="authors[${i.index}].firstName" type="text"/>
                 </td>
                 <td>Last Name</td>
                 <td>
-                <form:input path="${author.lastName}" type="text"/>
+                <form:input path="authors[${i.index}].lastName" type="text"/>
                 </td>
                 </c:forEach>
             </tr>
@@ -88,10 +88,10 @@
                     Category</td>
 
 
-                <c:forEach items="${bookForm.categories}" var="category">
+                <c:forEach items="${bookForm.categories}" var="category" varStatus="i">
 
                     <td>
-                        <form:input path="${category.name}" type="text"/>
+                        <form:input path="categories[${i.index}].name" type="text"/>
                     </td>
                 </c:forEach>
 

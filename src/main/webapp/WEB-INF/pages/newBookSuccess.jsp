@@ -17,6 +17,7 @@
 
 
   <p>Success!!!!</p>
+  <p>${result}</p>
 </div>
 </body>
 </html>

@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 
 @Controller
@@ -63,21 +62,16 @@ public class BookStoreController {
         Book bookForm = new Book();
         model.put("bookForm", bookForm);
         model.addAttribute("bookList", "Test");
-//        model.addAttribute("author", author);
-//        model.addAttribute("category", category);
-
         return "newBook";
     }
     @RequestMapping(value = "/book/add", method = RequestMethod.POST)
-    public String processAddForm( @ModelAttribute("bookForm") Book book,
-                                  Map<String, Object> model) {
+    public String processAddForm( @ModelAttribute(value="bookForm") Book book,
+                                  ModelMap model) {
 
         String urlBook = "http://localhost:8443/bookstore/book";
-        System.out.println("Title: " + book.getTitle());
         RestTemplate restTemplate = new RestTemplate();
         Book result = restTemplate.postForObject( urlBook, book, Book.class);
-        System.out.println("Author: "+book.getAuthors().get(0).getFirstName());
-        System.out.println("result = " + result);
+        model.addAttribute("result", result);
         return "newBookSuccess";
     }
 
@@ -104,10 +98,6 @@ public class BookStoreController {
 
 
     private ArrayList<Book> sortBooks(String order, ArrayList<Book> books) {
-        /*title-asc">Title: A-Z</option>
-            <option value="title-desc">Title: Z-A</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc*/
 
         if (order.equals("title-asc")) {
                 Collections.sort(books, new BookComparator.BookComparatorDescending());
@@ -122,6 +112,17 @@ public class BookStoreController {
         }
 
         return books;
+    }
+
+    @RequestMapping(value = "/book/delete", method = RequestMethod.GET)
+    public String deleteBookForm(@RequestParam ("id")String id, ModelMap model) {
+        String urlBook = "http://localhost:8443/bookstore/books/"+id;
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(urlBook);
+        String bookID = "Book with ID "+id+ "has been deleted";
+        model.addAttribute("DeleteMessage", bookID);
+
+        return "index";
     }
 
 
