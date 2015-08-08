@@ -23,9 +23,9 @@
 
                 <li class="items">
                     <div id="itemContainer">
-                        <div><img id="singleBookImage" src="/images/${book.imageName}"/></div>
+                        <div id ="imageHolder"><img id="singleBookImage" src="${book.imageName}"/></div>
                         <div id="description">
-                            <div id="topDescriptionItem">
+                            <div id="topSingleDescriptionItem">
                                     ${book.title}<%=" "%>
                                         Publisher: ${book.publisher}<%=": "%>
                                     Year Published: ${book.yearPublished}<%=" "%>

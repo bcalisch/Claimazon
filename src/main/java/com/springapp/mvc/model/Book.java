@@ -107,6 +107,7 @@ public class Book {
         bookString.append("Description: "+this.description+ " -");
         bookString.append("Publisher: "+this.publisher+ " -");
         bookString.append("Year Published: "+this.yearPublished.substring(0,4)+ " -");
+        bookString.append("Image Name: "+this.imageName+ " -");
         bookString.append("Authors: ");
         for(Author author: this.authors){
             bookString.append(author.getFirstName()+ " " + author.getLastName()+", ");

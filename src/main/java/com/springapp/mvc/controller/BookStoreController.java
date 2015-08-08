@@ -15,16 +15,18 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.ResourceBundle;
 
 
 @Controller
-
 public class BookStoreController {
+    private String bookStoreServiceURI = ResourceBundle.getBundle("app").getString("bookstoreServiceURI");
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
-        model.addAttribute("message", "Click here to see all books");
         return "index";
     }
+
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String printBooksByCategory(@RequestParam("category") String category,
                                        @RequestParam("order") String order,
@@ -33,11 +35,11 @@ public class BookStoreController {
         ArrayList<Book> books;
         String urlBook;
         if (category.equals("Default")) {
-            urlBook = "http://localhost:8443/bookstore/books";
+            urlBook = bookStoreServiceURI+"books";
         } else {
-            urlBook = "http://localhost:8443/bookstore/books/category/" + category;
+            urlBook = bookStoreServiceURI+"books/category/" + category;
         }
-        String urlCategory = "http://localhost:8443/bookstore/categories/";
+        String urlCategory = bookStoreServiceURI+"categories/";
 
         ArrayList<LinkedHashMap> booksHashmap = restTemplate.getForObject(urlBook, ArrayList.class);
         ArrayList<Category> categories = restTemplate.getForObject(urlCategory, ArrayList.class);
@@ -48,15 +50,17 @@ public class BookStoreController {
         model.addAttribute("category", category);
         return "books";
     }
+
     @RequestMapping(value = "/book", method = RequestMethod.GET)
     public String printSingleBook(@RequestParam("id") String id, ModelMap model) {
         RestTemplate restTemplate = new RestTemplate();
-        String urlBook = "http://localhost:8443/bookstore/books/id/"+id;;
+        String urlBook = bookStoreServiceURI+"books/id/"+id;;
         ArrayList<LinkedHashMap> books = restTemplate.getForObject(urlBook, ArrayList.class);
         model.addAttribute("bookList", books);
 
         return "book";
     }
+
     @RequestMapping(value = "/book/add", method = RequestMethod.GET)
     public String addBookForm( ModelMap model) {
         Book bookForm = new Book();
@@ -64,11 +68,12 @@ public class BookStoreController {
         model.addAttribute("bookList", "Test");
         return "newBook";
     }
+
     @RequestMapping(value = "/book/add", method = RequestMethod.POST)
     public String processAddForm( @ModelAttribute(value="bookForm") Book book,
                                   ModelMap model) {
 
-        String urlBook = "http://localhost:8443/bookstore/book";
+        String urlBook = bookStoreServiceURI+"book";
         RestTemplate restTemplate = new RestTemplate();
         Book result = restTemplate.postForObject( urlBook, book, Book.class);
         model.addAttribute("result", result);
@@ -99,9 +104,13 @@ public class BookStoreController {
 
     private ArrayList<Book> sortBooks(String order, ArrayList<Book> books) {
 
+//        switch(order){
+//            case("title-asc"):{
+//        }
         if (order.equals("title-asc")) {
                 Collections.sort(books, new BookComparator.BookComparatorDescending());
-            }else if (order.equals("title-desc")){
+            }
+        else if (order.equals("title-desc")){
                 Collections.sort(books, new BookComparator.BookComparatorAscending());
             }
         else if (order.equals("price-desc")){
@@ -116,13 +125,13 @@ public class BookStoreController {
 
     @RequestMapping(value = "/book/delete", method = RequestMethod.GET)
     public String deleteBookForm(@RequestParam ("id")String id, ModelMap model) {
-        String urlBook = "http://localhost:8443/bookstore/books/"+id;
+        String urlBook = bookStoreServiceURI+"books/"+id;
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(urlBook);
-        String bookID = "Book with ID "+id+ "has been deleted";
+        String bookID = "<h3>Book with ID "+id+ "has been deleted<h3>";
         model.addAttribute("DeleteMessage", bookID);
+        return "redirect:" + "/";
 
-        return "index";
     }
 
 

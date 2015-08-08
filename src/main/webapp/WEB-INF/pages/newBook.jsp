@@ -85,6 +85,14 @@
             </tr>
             <tr>
                 <td>
+                    Image URL
+                </td>
+                <td>
+                    <form:input type="text" path="imageName"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     Category</td>
 
 

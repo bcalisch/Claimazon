@@ -21,11 +21,12 @@
         <input type="hidden" name="fst" value="as:off">
         <input type="hidden" name="rh" value="n:283155,k:java">
         <input type="hidden" name="qid" value="1438821314">
-        <span class="a-size-base">Sort by&nbsp;</span>
+        <span class="a-size-base"></span>
         <select class="a-spacing-top-mini"
                 style="vertical-align: baseline;" name="sort" id="sort"
                 onchange="javascript:goToNewPage();">
-            <option value="title-asc" selected="selected">Title: A-Z</option>
+            <option value="title-asc" selected="selected">Sort By</option>
+            <option value="title-asc" >Title: A-Z</option>
             <option value="title-desc">Title: Z-A</option>
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
@@ -69,7 +70,7 @@
             <c:forEach var="book" items="${bookList}">
                 <li class="items">
                     <div id="itemContainer">
-                        <div><img id="image" src="/images/${book.imageName}"/></div>
+                        <div><img id="image" src="${book.imageName}"/></div>
                         <div id="description">
                             <div id="topDescriptionItem">${book.id}<%=" "%>
                                 <a href="/book?id=${book.id}">${book.title}</a>

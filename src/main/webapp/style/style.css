@@ -53,6 +53,10 @@ a:hover{
     text-decoration:none;
     color: #e47911
 }
+
+h2 a{
+    margin-right:3em;
+}
 #leftNav a{
     color:#333;
 }
@@ -92,8 +96,14 @@ a:hover{
 }
 
 #topDescriptionItem{
+    display:inline-flex;
     position: relative;
     top: -5em;
+}
+#topSingleDescriptionItem{
+    top: 6em;
+    position: absolute;
+    display: inline-block;
 }
 #description{
     display: inline-flex;
@@ -101,6 +111,12 @@ a:hover{
 }
 #descriptionItem{
     display:inline-flex;
+}
+#imageHolder{
+    margin-left:1em;
+}
+#resultList{
+    width:75%;
 }
 div{
     display:inline;

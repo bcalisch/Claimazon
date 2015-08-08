@@ -1,14 +1,11 @@
 package com.springapp.mvc.model;
 
 public class Author {
-    private String firstName;
-    private String lastName;
+    private String firstName = "";
+    private String lastName= "";
 
 
-    public Author(){
-        firstName = "";
-        lastName= "";
-    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

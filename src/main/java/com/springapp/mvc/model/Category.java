@@ -6,12 +6,10 @@ package com.springapp.mvc.model;
 
 
 public class Category {
-    private String name;
+    private String name = "";
     private int count;
 
-    public Category(){
-        name="";
-    }
+
     public String getName() {
         return name;
     }

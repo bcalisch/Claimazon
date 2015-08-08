@@ -13,9 +13,9 @@
 </head>
 <body>
 <h1> Add New Book</h1>
-<div id="formContainer">
-
-
+<div class="itemsContainer">
+  <h1><a href="/books?category=Default&order=Default">View All Books</a></h1>
+<h4><a href="/books?category=Default&order=Default">Back to all books</a></h4>
   <p>Success!!!!</p>
   <p>${result}</p>
 </div>
